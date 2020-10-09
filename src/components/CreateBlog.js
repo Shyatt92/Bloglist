@@ -17,10 +17,10 @@ const CreateBlog = ({ createBlog }) => {
     setUrl(event.target.value)
   }
 
-  const addBlog = (event) => {
+  const addBlog = async (event) => {
     event.preventDefault()
 
-    createBlog({
+    await createBlog({
       title,
       author,
       url

@@ -20,8 +20,10 @@ const BlogForm = ({ blogs, user, handleLogout, addBlog, message }) => {
         />
       </Togglable>
       <br />
-      {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} />
+      {blogs.sort((a, b) => {
+        return b.likes - a.likes
+      }).map(blog =>
+        <Blog key={blog.id} blog={blog} user={user} />
       )}
     </div>
   )
