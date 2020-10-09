@@ -1,3 +1,4 @@
+import './App.css'
 import React, { useState, useEffect } from 'react'
 import BlogForm from './components/BlogForm'
 import LoginForm from './components/LoginForm'
@@ -106,7 +107,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="App">
     {user === null
       ? <LoginForm
         handleLogin={handleLogin}

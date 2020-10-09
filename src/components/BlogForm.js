@@ -14,7 +14,7 @@ const BlogForm = ({ blogs, user, handleLogout, addBlog, message }) => {
       <span>{user.name} logged in</span>
       <button onClick={handleLogout}>Logout</button>
       <br />
-      <Togglable buttonLabel="Create Blog">
+      <Togglable buttonLabel="Create Blog" buttonHide="Cancel">
         <CreateBlog
         createBlog={addBlog}
         />
