@@ -2,8 +2,9 @@ import React from 'react'
 import Blog from './Blog'
 import CreateBlog from './CreateBlog'
 import Notifications from './Notifications'
+import Togglable from './Togglable'
 
-const BlogForm = ({ blogs, user, handleLogout, title, setTitle, author, setAuthor, url, setUrl, addBlog, message }) => {
+const BlogForm = ({ blogs, user, handleLogout, addBlog, message }) => {
   return (
     <div>
       <h1>Blogs</h1>
@@ -13,15 +14,11 @@ const BlogForm = ({ blogs, user, handleLogout, title, setTitle, author, setAutho
       <span>{user.name} logged in</span>
       <button onClick={handleLogout}>Logout</button>
       <br />
-      <CreateBlog
-      title={title}
-      setTitle={setTitle}
-      author={author}
-      setAuthor={setAuthor}
-      url={url}
-      setUrl={setUrl}
-      addBlog={addBlog}
-      />
+      <Togglable buttonLabel="Create Blog">
+        <CreateBlog
+        createBlog={addBlog}
+        />
+      </Togglable>
       <br />
       {blogs.map(blog =>
         <Blog key={blog.id} blog={blog} />

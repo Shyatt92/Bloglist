@@ -1,6 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const CreateBlog = ({ title, setTitle, author, setAuthor, url, setUrl, addBlog }) => {
+const CreateBlog = ({ createBlog }) => {
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [url, setUrl] = useState('')
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value)
+  }
+
+  const handleAuthorChange = (event) => {
+    setAuthor(event.target.value)
+  }
+
+  const handleUrlChange = (event) => {
+    setUrl(event.target.value)
+  }
+
+  const addBlog = (event) => {
+    event.preventDefault()
+
+    createBlog({
+      title,
+      author,
+      url
+    })
+
+    setTitle('')
+    setAuthor('')
+    setUrl('')
+  }
+  
   return (
     <div>
       <h2>Create New Blog</h2>
@@ -11,7 +41,7 @@ const CreateBlog = ({ title, setTitle, author, setAuthor, url, setUrl, addBlog }
         type="text"
         name="Title"
         value={title}
-        onChange={setTitle}
+        onChange={handleTitleChange}
         />
         <br />
         <br />
@@ -21,7 +51,7 @@ const CreateBlog = ({ title, setTitle, author, setAuthor, url, setUrl, addBlog }
         type="text"
         name="Author"
         value={author}
-        onChange={setAuthor}
+        onChange={handleAuthorChange}
         />
         <br />
         <br />
@@ -31,7 +61,7 @@ const CreateBlog = ({ title, setTitle, author, setAuthor, url, setUrl, addBlog }
         type="text"
         name="URL"
         value={url}
-        onChange={setUrl}
+        onChange={handleUrlChange}
         />
         <br />
         <br />

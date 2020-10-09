@@ -9,10 +9,7 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
-  const [ notifyMessage, setNotifyMessage ] = useState({
+  const [notifyMessage, setNotifyMessage] = useState({
     message: null,
     status: '',
   });
@@ -79,22 +76,11 @@ const App = () => {
     setUser(null)
   }
 
-  const addBlog = async event => {
-    event.preventDefault()
-
-    const blogObject = {
-      title,
-      author,
-      url
-    }
-
+  const addBlog = async (blogObject) => {
     try {
       const result = await blogService.create(blogObject)
 
       setBlogs(blogs.concat(result))
-      setTitle('')
-      setAuthor('')
-      setUrl('')
       setNotifyMessage({
         message: `A new blog: '${blogObject.title}' by ${blogObject.author} was added!`,
         status: 'success'
@@ -134,12 +120,6 @@ const App = () => {
         blogs={blogs}
         user={user}
         handleLogout={handleLogout}
-        title={title}
-        setTitle={({ target }) => setTitle(target.value)}
-        author={author}
-        setAuthor={({ target }) => setAuthor(target.value)}
-        url={url}
-        setUrl={({ target }) => setUrl(target.value)}
         addBlog={addBlog}
         message={notifyMessage}
         />
